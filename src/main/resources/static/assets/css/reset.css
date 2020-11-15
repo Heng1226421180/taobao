@@ -1,0 +1,74 @@
+﻿@charset "utf-8";
+/* CSS Document */
+* {
+    margin:0px;
+    padding:0px;
+    font-size: 14px;
+    font-family:Arial,"微软雅黑";
+}
+
+body,html{
+    width: 100%;
+    height: auto;
+    color:#333;
+    background-size: 100% 100%;
+}
+
+img{ 
+    border:none; 
+    font-size:0;
+    vertical-align: middle;
+}
+
+ul{
+    font-size:0;
+}
+ul,ol,li{
+    list-style:none; 
+    vertical-align:top; 
+}
+
+body,div,span,p,img,h1,h2,h3,h4,h5,h6,ul,ol,li,em,tr,td,input,label,select {
+    border: none;
+    outline:medium none; 
+    background:none; 
+    font-style:normal;
+} 
+a{
+    text-decoration:none;
+    outline:none;
+    cursor: pointer;
+} 
+
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+input,select,textarea{
+    background:none; 
+    outline:none; 
+    -webkit-appearance:none;
+    border:none;
+}
+
+/*清除浮动*/
+.clear-both:before, .clear-both:after {
+    display: table;
+    content: "";
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+}
+.clearfix {
+    *zoom: 1; /*IE/7/6*/
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}

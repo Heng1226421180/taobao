@@ -1,0 +1,451 @@
+﻿body, html { 
+    /* overflow: hidden;*/
+    background: url('../images/bg.jpg') no-repeat;
+    background-size: cover;
+}
+
+.t_title{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    line-height: 80px;
+    color: #fff;
+}
+
+.header{
+    width: auto;
+    height: 80px;
+    /* padding:0 20px; */
+    /* min-width: 1366px; */
+}
+.bg_header{
+    width: 100%;
+    height: 80px;
+    background: url(../images/title.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+/*登录*/
+
+.LoginBox { 
+    width: 400px; 
+    height: 240px; 
+    position: absolute; 
+    left: 50%; 
+    top: 50%; 
+    margin: -120px 0 0 -200px; 
+    background: rgba(245, 245, 245, 0.568); 
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+.LoginHead { 
+    background: #2C58A6; 
+    height: 45px; 
+    line-height: 45px; 
+    text-align: center; 
+    color: #fff; 
+    font-size: 18px; 
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.mar_top30 { 
+    margin-top: 30px; 
+}
+.LoginUserBoxOut { 
+    margin: auto; 
+    width: 325px; 
+}
+.LoginUserBox { 
+    width: 325px; 
+    height: 30px; 
+    background: #fff; 
+    border: 1px solid #ccc; 
+    border-radius: 3px; 
+    margin-bottom: 20px; 
+    position: relative; 
+}
+
+.LoginUserInput { 
+    padding: 0 20px; 
+    height: 100%; 
+    font-size: 14px; 
+    color: #333; 
+    width: 285px; 
+}
+
+/* 用placeholder代替value时 */
+/* .LoginUserInput::-webkit-input-placeholder { 
+    color: #ccc; 
+} */
+
+.LoginLastBox { 
+    position: relative; 
+}
+.LoginLastBox .leftBox { 
+    display: inline-block; 
+    vertical-align: middle; 
+    float: left; 
+    margin: 11px 0 0 0; 
+}
+.LoginLastBox .leftBox span { 
+    font-size: 12px; 
+    vertical-align: middle; 
+}
+.inputcheck { 
+    -webkit-appearance: none; 
+}
+.inputcheck + label { 
+    display: inline-block; 
+    width: 14px; 
+    height: 14px; 
+    cursor: pointer; 
+    top: 0; 
+    left: 0; 
+    background:  #2C58A6; 
+    vertical-align: middle; 
+    position: relative; 
+}
+
+.inputcheck:checked + label::before { 
+    display: inline-block; 
+    content: "\2714"; 
+    text-align: center; 
+    font-size: 16px; 
+    color: white; 
+    position: absolute; 
+    top: -3px; 
+    left: 2px; 
+}
+
+.LoginLastBox .login { 
+    width: 99px; 
+    height: 35px; 
+    text-align: center; 
+    display: inline-block; 
+    float: right; 
+    background: #2C58A6; 
+    color: #fff; 
+    border-radius: 3px; 
+    line-height: 35px; 
+    font-size: 16px; 
+}
+.LoginLastBox .RightBox:hover { 
+    background: rgb(83, 126, 182); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*数据表格*/
+.PublicHead { 
+    position: fixed; 
+    height: 60px; 
+    padding: 0 2%; 
+    width: 96%; 
+    z-index: 11; 
+    left: 0; 
+}
+
+
+.PublicDownWhole { 
+    height: 100%; 
+    position: relative; 
+}
+
+
+.PublicDownWhole .RightBox { 
+    margin: 20px;
+    /* background: #f1f1f1;  */
+    padding: 2%; 
+    vertical-align: top; }
+
+/*盒子样式*/
+.PublicPointToAgeText { 
+    font-weight: bold; 
+    margin-top: 80px;
+}
+.PublicPointToAgeText span { 
+    color: rgb(255, 255, 255); 
+    font-size: 15px; 
+}
+.PublicPointToAgeText .span1 { 
+    margin: 0 5px 0 0; 
+}
+.InquireBox { 
+    height: 45px; 
+    /* background: #fff;  */
+    width: 100%; 
+    margin: 0 0 5px 0; 
+}
+.InquireBox .InquireleftBox { 
+    display: inline-block; 
+    float: left; 
+    margin: 9px; 
+}
+.InquireBox .InquireleftBox .Text { 
+    color: rgb(255, 255, 255); 
+    display: inline-block; 
+    vertical-align: middle; 
+}
+.InquireBox .InquireleftBox .InputDiv { 
+    display: inline-block; 
+    border: 2px solid #4687fb; 
+    background-color: #7398d8;
+    height: 30px; 
+    vertical-align: middle; 
+    position: relative; 
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.InquireBox .InquireleftBox .InputDiv i { 
+    position: absolute; 
+    top: 50%; 
+    right: 10px; 
+    -webkit-transform: translate(0,-50%); 
+    -moz-transform: translate(0,-50%); 
+    -ms-transform: translate(0,-50%); 
+    -o-transform: translate(0,-50%); 
+    transform: translate(0,-50%); 
+    font-size: 14px; 
+}
+.InquireBox .InquireleftBox .InputDiv .phoneInput { 
+    line-height: 30px; 
+    padding: 0 10px; 
+    width: 190px; 
+    height: 100%; 
+}
+.InquireBox .InquireleftBox .InputDiv .phoneInput::-webkit-input-placeholder { 
+    color: rgb(194, 188, 188); 
+}
+.PublicBtnIcon { 
+    display: inline-block; 
+    color: #fff; 
+    padding: 3px 10px; 
+    margin: 10px; 
+    cursor: pointer; 
+}
+.PublicBtnIcon i { 
+    vertical-align: middle; 
+}
+.PublicBtnIcon span { 
+    vertical-align: middle; 
+}
+.Color1Btn { 
+    background: #2c58a6; 
+    margin: 12px 80px;
+}
+.Color1Btn:hover { 
+    background: #7398d8; 
+    transition: all ease .3s; 
+}
+
+.InquireTableBox { 
+    background: rgba(255, 255, 255, 0.185); 
+}
+
+.InquireSelectTable { 
+    margin: 20px 10px 0 10px; 
+    overflow: auto; 
+}
+.PublicTableCss { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+    border: 1px solid #2c58a6; 
+}
+/* head */
+.PublicTableCss thead { 
+    background: #072951; 
+}
+.PublicTableCss thead tr td { 
+    color: rgb(255, 255, 255);
+    max-width: 135px; 
+    padding: 10px 15px; 
+    text-align: center; 
+    font-weight: bold; 
+    position: relative; 
+    white-space: nowrap; 
+}
+.PublicTableCss thead tr td::before { 
+    position: absolute; 
+    content: ""; 
+    right: 0.5px; 
+    top: 50%; 
+    width: 1px; 
+    height: 70%; 
+    
+    -webkit-transform: translate(0%,-50%); 
+    -moz-transform: translate(0%,-50%); 
+    -ms-transform: translate(0%,-50%); 
+    -o-transform: translate(0%,-50%); 
+    transform: translate(0%,-50%); 
+}
+.PublicTableCss thead tr td:last-child::before { 
+    display: none; 
+}
+/* body */
+.PublicTableCss tbody tr { 
+    border-bottom: 1px solid #2c58a6; 
+}
+.PublicTableCss tbody tr:hover { 
+    background: #2c58a6; 
+    transition: all ease .3s; 
+}
+.PublicTableCss tbody tr td { 
+    max-width: 300px; 
+    height: 30px;
+    /* padding: 5px 15px;  */
+    color: rgb(255, 255, 255);
+    text-align: center; 
+    position: relative; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+.PublicTableCss tbody tr td a {
+    color: rgba(245, 245, 245, 0.568);
+}
+
+.PublicTableCss tbody tr td::before { 
+    position: absolute; 
+    content: ""; 
+    right: 0.5px; 
+    top: 50%; 
+    width: 1px; 
+    height: 70%; 
+    background: #ccc; 
+    -webkit-transform: translate(0%,-50%); 
+    -moz-transform: translate(0%,-50%); 
+    -ms-transform: translate(0%,-50%); 
+    -o-transform: translate(0%,-50%); 
+    transform: translate(0%,-50%); 
+}
+.PublicTableCss tbody tr td:last-child::before { 
+    display: none; 
+}
+
+/* 图片？ */
+.PublicTableCss tbody tr td .productImgBox { 
+    width: 65px; 
+    height: 30px; 
+    overflow: hidden; 
+    margin: auto; 
+}
+.PublicTableCss tbody tr td .productImgBox img { 
+    width: 100%; 
+}
+
+
+/* 分页 */
+.PageNumber { 
+    padding: 20px 10px 20px 0; 
+    text-align: right; 
+    position: relative; 
+}
+.LeftArrow, .RightArrow { 
+    font-size: 14px; 
+    padding: 5px 10px; 
+    color: #647686; 
+    padding: 0 12px; 
+    cursor: pointer; 
+    line-height: 30px; 
+}
+.LeftArrow { 
+    border-left: 1px solid #2c58a6; 
+    border-right: 1px solid #2c58a6; 
+    border-bottom: 1px solid #2c58a6; 
+    border-top: 1px solid #2c58a6; 
+    float: left; 
+    height: 30px; 
+}
+.RightArrow { 
+    border-left: 0px solid #2c58a6; 
+    border-right: 1px solid #2c58a6; 
+    border-bottom: 1px solid #2c58a6; 
+    border-top: 1px solid #2c58a6; 
+    float: right; 
+}
+.LeftArrow:hover { 
+    color: #fff; 
+    background: #2c58a6; 
+    border: 1px solid #2c58a6; 
+}
+.RightArrow:hover { 
+    color: #fff; 
+    background: #2c58a6; 
+    border: 1px solid #2c58a6; 
+    border-left: 0; 
+}
+.NumbersBox { 
+    display: inline-block; 
+}
+.NumbersBox ul { 
+    display: inline-block; 
+}
+.NumbersBox ul li { 
+    display: inline-block; 
+    border-top: 1px solid #2c58a6; 
+    border-bottom: 1px solid #2c58a6; 
+    border-right: 1px solid #2c58a6; 
+    float: left; 
+    padding: 0px 12px; 
+    color: #000; 
+    height: 30px; 
+    line-height: 30px; 
+}
+
+
+.NumbersBox ul li:hover { 
+    color: #fff; 
+    background: #2c58a6; 
+    transition: all ease .4s; 
+    -webkit-transition: all ease .4s; 
+    -moz-transition: all ease .4s; 
+    -ms-transition: all ease .4s; 
+    -o-transition: all ease .4s; 
+    cursor: pointer; 
+    border-right: 1px solid #2c58a6; 
+    border-top: 1px solid #2c58a6; 
+    border-bottom: 1px solid #2c58a6; 
+}
+.NumbersBox ul li.Select { 
+    color: #fff; 
+    background: #2c58a6; 
+    transition: all ease .4s; 
+    -webkit-transition: all ease .4s; 
+    -moz-transition: all ease .4s; 
+    -ms-transition: all ease .4s; 
+    -o-transition: all ease .4s; 
+    cursor: pointer; 
+    border-right: 1px solid #2c58a6; 
+    border-top: 1px solid #2c58a6; 
+    border-bottom: 1px solid #2c58a6; 
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.dao.ProductDAO">
+<!-- User queryUserByUsernameAndPassword(String username, String password)
+int saveUser(User user)-->
+
+    <select id="queryProductById"  resultType="com.unicom.bean.Product">
+        select * from taobao where id=#{id}
+    </select>
+    <select id="queryProducts"  resultType="com.unicom.bean.Product">
+        select * from taobao
+<!--        <if test=" key!=null">-->
+<!--            where title-->
+<!--        </if>-->
+        order by id
+    </select>
+
+
+</mapper>
