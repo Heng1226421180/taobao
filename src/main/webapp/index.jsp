@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+
 
 <head>
     <meta charset="utf-8">
@@ -7,22 +9,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>大数据中心</title>
    
-    <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/iconfont.css" rel="stylesheet" />
-    <link href="css/index.css" rel="stylesheet" />
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/f.js"></script>
+    <link href="static/css/reset.css" rel="stylesheet" />
+    <link href="static/css/iconfont.css" rel="stylesheet" />
+    <link href="static/css/index.css" rel="stylesheet" />
+    <script src="static/js/jquery-1.9.1.min.js"></script>
+    <script src="static/js/f.js"></script>
 
-
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/index_.css" rel="stylesheet" >
+    <%
+        String base=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()
+                +request.getContextPath()+"/";
+        pageContext.setAttribute("basePath",base);
+    %>
+    <%--${pageContext.getAttribute("base")}--%>
+    <base href="<%=base%>">
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/index_.css" rel="stylesheet" >
 
     <!-- <object data="map.html" type="text/x-scriptlet" style="border: 0px"></object> -->
 
     <!-- map -->
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/echarts.min.js"></script>
-    <script type="text/javascript" src="js/map/china.js"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="static/js/map/china.js"></script>
 </head>
 
 
@@ -52,15 +60,19 @@
                     </div>
                     <!--查询-->
                     <div class="InquireBox clearfix">
-                        <div class="InquireleftBox">
-                            <div class="Text">网址：</div>
-                            <div class="InputDiv"> <input class="phoneInput" placeholder="请输入查询的网址关键词" /></div>
-                        </div>
+                        <form style="color: white" action="product" method="post">
+                            关键词：<input type="text"  name="key" placeholder="请输入查询的关键词" value="${key}"/>
+                            <input type="submit" value="查询" />
+                        </form>
+<!--                        <div class="InquireleftBox">-->
+<!--                            <div class="Text">网址：</div>-->
+<!--                            <div class="InputDiv"> <input class="phoneInput" placeholder="请输入查询的网址关键词" /></div>-->
+<!--                        </div>-->
 
-                        <div class="PublicBtnIcon Color1Btn fl">
-                            <i class="iconfont icon-icon-chaxun"></i>
-                            <span>查询</span>
-                        </div>
+<!--                        <div class="PublicBtnIcon Color1Btn fl">-->
+<!--                            <i class="iconfont icon-icon-chaxun"></i>-->
+<!--                            <span>查询</span>-->
+<!--                        </div>-->
                     </div>
 
 
@@ -85,87 +97,111 @@
                                     </tr>
                                 </thead>
                                 <tbody class="PublicTableBody">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>title</td>
-                                        <td>
-                                            <a href="" class="href">href</a>
-                                        </td>
-                                        <td>price</td>
-                                        <td>deal</td>
-                                        <td>
-                                            <div class="productImgBox">
-                                                <img src="" />
-                                            </div>
-                                        </td>
-                                        <td>shop</td>
-                                        <td>
-                                            <a href="">shophref</a>
-                                        </td>
-                                        <td>
-                                            location
-                                        </td>
-                                        <td>
-                                            关键词
-                                        </td>
-                                        <td></td>
-                                        <td></td>
+                                <c:forEach items="${pageInfo.list}" var="product">
+                                    <tr >
+                                            <td >${product.id}</td>
+                                            <td >${product.title}</td>
+                                            <td ><a target="_blank" href="${product.itemhref}">${product.itemhref}</a></td>
+                                            <td >${product.price}</td>
+                                            <td >${product.deal}</td>
+                                            <td ><a target="_blank" href="${product.image}">${product.image}</a></td>
+                                            <td >${product.shop}</td>
+                                            <td ><a target="_blank" href="${product.shophref}">${product.shophref}</a></td>
+                                            <td >${product.location}</td>
+                                            <td >${product.icons}</td>
+                                            <td >${product.itemkeys}</td>
+                                            <td >${product.grade}</td>
                                     </tr>
-                                    <!-- <tr>
-                                        <td>2</td>
-                                        <td>title</td>
-                                        <td>
-                                            <a href="" class="href">href</a>
-                                        </td>
-                                        <td>price</td>
-                                        <td>deal</td>
-                                        <td>
-                                            <div class="productImgBox">
-                                                <img src="" />
-                                            </div>
-                                        </td>
-                                        <td>shop</td>
-                                        <td>
-                                            <a href="">shophref</a>
-                                        </td>
-                                        <td>
-                                            location
-                                        </td>
-                                        <td>
-                                            关键词2
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr> -->
-
-
-
+                                </c:forEach>
                                 </tbody>
                             </table>
-
                         </div>
 
+                            <%--  分页开始                      --%>
+                        <div id="page_nav" align="left">
+                            <c:if test="${pageInfo.pageNum >1}">
+                                <a href="${url}?pageNum=1">首页</a>
+                                <a href="${url}?pageNum=${pageInfo.hasPreviousPage==false?1:pageInfo.prePage}">上一页</a>
+                            </c:if>
 
-                        <!--分页-->
-                        <div class="PageNumber">
-                            <div class="NumbersBox">
-                                <div class="LeftArrow">
-                                    上一页
-                                </div>
-                                <ul>
-                                    <li class="Select">1</li>
-                                    <li class="">2</li>
-                                    <li class="">...</li>
-                                    <li class="">4</li>
-                                    <li class="">5</li>
-                                </ul>
-                                <div class="RightArrow ">
-                                    下一页
-                                </div>
-                            </div>
+                            <%-- 页码输出的开始--%>
+                            <c:choose>
+                                <%--    页码少于等于5时--%>
+                            <c:when test="${pageInfo.pages<=5}">
+                            <c:forEach begin="1" end="${pageInfo.pages}" var="i">
+                            <c:if test="${i==pageInfo.pageNum}">
+                                【${i}】
+                            </c:if>
+                            <c:if test="${i!=pageInfo.pageNum}">
+                            <a href="${url}?pageNum=${i}">${i}
+                                </c:if>
+                                </c:forEach>
+                                </c:when>
+                                    <%--                    页面大于5时--%>
+                                <c:when test="${pageInfo.pages>5}">
+                                <c:choose>
+                                    <%--前三个页面的显示--%>
+                                <c:when test="${pageInfo.pageNum<=3}">
+                                <c:forEach begin="1" end="5" var="i">
+                                <c:if test="${i==pageInfo.pageNum}">
+                                【${i}】
+                                </c:if>
+                                <c:if test="${i!=pageInfo.pageNum}">
+                                <a href="${url}?pageNum=${i}">${i}
+                                    </c:if>
+                                    </c:forEach>
+                                    </c:when>
+                                        <%--后三个页面的显示--%>
+                                    <c:when test="${pageInfo.pageNum>=pageInfo.pages-2}">
+                                    <c:forEach begin="${pageInfo.pages-4}" end="${pageInfo.pages}" var="i">
+                                    <c:if test="${i==pageInfo.pageNum}">
+                                    【${i}】
+                                    </c:if>
+                                    <c:if test="${i!=pageInfo.pageNum}">
+                                    <a href="${url}?pageNum=${i}">${i}
+                                        </c:if>
+                                        </c:forEach>
+                                        </c:when>
+                                            <%--其他情况--%>
+                                        <c:otherwise>
+                                        <c:forEach begin="${pageInfo.pageNum-2}" end="${pageInfo.pageNum+2}" var="i">
+                                        <c:if test="${i==pageInfo.pageNum}">
+                                        【${i}】
+                                        </c:if>
+                                        <c:if test="${i!=pageInfo.pageNum}">
+                                        <a href="${url}?pageNum=${i}">${i}
+                                            </c:if>
+                                            </c:forEach>
+                                            </c:otherwise>
+                                            </c:choose>
+
+                                            </c:when>
+                                            </c:choose>
+
+                                            <%-- 页码输出的结束--%>
+                                            <c:if test="${pageInfo.pageNum<pageInfo.pages}">
+                                            <a href="${url}?pageNum=${pageInfo.hasNextPage==false? pageInfo.pages: pageInfo.nextPage}">下一页</a>
+                                            <a href="${url}?pageNum=${pageInfo.pages}">末页</a>
+                                            </c:if>
+                                            共${pageInfo.pages}页，${pageInfo.total}条记录
+                                            到第<input value="${empty param.pageNum?1:param.pageNum}" name="pn" id="pn_input"/>页
+                                            <input id="searchPageBtn" type="button" value="确定">
+
+                                            <script type="text/javascript">
+                                                $(function () {
+                                                    $("#searchPageBtn").click(function () {
+                                                        var pageNum=$("#pn_input").val();
+                                                        var pages=${pageInfo.pages};
+                                                        if (pageNum<1||pageNum>pages){
+                                                            alert("跳转页面不合法");
+                                                            location.href="${pageContext.getAttribute("basePath")}${url}?pageNum=1";
+                                                        }else {
+                                                            location.href="${pageContext.getAttribute("basePath")}${url}?pageNum="+pageNum;
+                                                        }
+                                                    })
+                                                })
+                                            </script>
                         </div>
-
-
                     </div>
                 </div>
 
@@ -216,10 +252,20 @@
                                     <th>商品网址</th>
                                 </tr>
                             </thead>
+
                             <tbody class="left_top_table_body">
+                            <c:forEach items="${topList}" var="product">
+                                <tr class="">
+                                    <td class="num">名次</td>
+                                    <td>${product.shop}</td>
+                                    <td>${product.title}</td>
+                                    <td>${product.deal}</td>
+                                    <td ><a target="_blank" href="${product.itemhref}">${product.itemhref}</a></td>
+                                </tr>
+                            </c:forEach>
+
                             </tbody>
                         </table>
-
                     </div>
                     <!-- <div id="chart_1" class="chart" style="width:100%;height: 280px;"></div> -->
                 </div>
@@ -246,17 +292,17 @@
                     </div>
                     <div class="circle circle_t">
                         <div class="t">违规商品数量<span
-                                style="font-size: 25px; color: rgb(216, 149, 4);display: block;">10000</span>
+                                style="font-size: 25px; color: rgb(216, 149, 4);display: block;">${size}</span>
                         </div>
                     </div>
                     <div class="circle circle_l fl">
                         <div class="l">最高价格<span
-                                style="font-size: 25px; color: rgb(216, 4, 4);display: block;">800</span>
+                                style="font-size: 25px; color: rgb(216, 4, 4);display: block;">${maxPrice}</span>
                         </div>
                     </div>
                     <div class="circle circle_r fr">
                         <div class="r">最低价格<span
-                                style="font-size: 25px; color: rgb(36, 216, 4);display: block;">20</span>
+                                style="font-size: 25px; color: rgb(36, 216, 4);display: block;">${minPrice}</span>
                         </div>
                     </div>
 
@@ -296,124 +342,114 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
 
 </body>
 
 
-
-
 <!-- 生成动态排名表格 -->
-<script>
-var datas = [
-        {
-            no: 1,
-            title: '军装',
-            itemhref: 'hppt://baidu.com',
-            price: 150,
-            deal: 10000,
-            image: '',
-            shop: 'taobao',
-            shophref:'',
-            location: 'beijing',
-            icons: '',
-            itemkeys: '',
-            grade: ''
+<%--<script>--%>
+<%--var datas = [--%>
+<%--        {--%>
+<%--            no: 1,--%>
+<%--            title: '军装',--%>
+<%--            itemhref: 'hppt://baidu.com',--%>
+<%--            price: 150,--%>
+<%--            deal: 10000,--%>
+<%--            image: '',--%>
+<%--            shop: 'taobao',--%>
+<%--            shophref:'',--%>
+<%--            location: 'beijing',--%>
+<%--            icons: '',--%>
+<%--            itemkeys: '',--%>
+<%--            grade: ''--%>
 
-        }
-        ];
-var ptbody = document.querySelector('.PublicTableBody');
-    for (var i = 0; i < datas.length; i++) {
-        var ptr = document.createElement('tr');
-        ptbody.appendChild(ptr);
-        for (var k in datas[i]) {
-            var ptd = document.createElement('td');
-            ptr.appendChild(ptd); 
-            ptd.innerHTML = datas[i][k];
-        }
-        
-    }
+<%--        }--%>
+<%--        ];--%>
+<%--var ptbody = document.querySelector('.PublicTableBody');--%>
+<%--    for (var i = 0; i < datas.length; i++) {--%>
+<%--        var ptr = document.createElement('tr');--%>
+<%--        ptbody.appendChild(ptr);--%>
+<%--        for (var k in datas[i]) {--%>
+<%--            var ptd = document.createElement('td');--%>
+<%--            ptr.appendChild(ptd);--%>
+<%--            ptd.innerHTML = datas[i][k];--%>
+<%--        }--%>
 
+<%--    }--%>
 
+<%--    var datas = [--%>
+<%--        {--%>
+<%--            list: 1,--%>
+<%--            shop: 'taobao',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 10000,--%>
+<%--            // href: <a href=''>ggg</a>--%>
 
-    var datas = [
-        {
-            list: 1,
-            shop: 'taobao',
-            commodit: '军装',
-            deal: 10000,
-            // href: <a href=''>ggg</a>
+<%--        },--%>
+<%--        {--%>
+<%--            list: 2,--%>
+<%--            shop: 'jingdong',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 9000,--%>
+<%--            href: 'asdfghj'--%>
+<%--        },--%>
+<%--        {--%>
+<%--            list: 3,--%>
+<%--            shop: 'xianyu',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 5000,--%>
+<%--            href: 'jkgjgkhgk'--%>
+<%--        },--%>
+<%--        {--%>
+<%--            list: 4,--%>
+<%--            shop: 'weipinhui',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 100,--%>
+<%--            href: 'asdfghj'--%>
+<%--        },--%>
+<%--        {--%>
+<%--            list: 5,--%>
+<%--            shop: '1688',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 100,--%>
+<%--            href: 'asdfghj'--%>
+<%--        },--%>
+<%--        {--%>
+<%--            list: 6,--%>
+<%--            shop: '1688',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 100,--%>
+<%--            href: 'asdfghj'--%>
+<%--        },--%>
+<%--        {--%>
+<%--            list: 7,--%>
+<%--            shop: '1688',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 100,--%>
+<%--            href: 'asdfghj'--%>
+<%--        },--%>
+<%--        {--%>
+<%--            list: 8,--%>
+<%--            shop: '1688',--%>
+<%--            commodit: '军装',--%>
+<%--            deal: 100,--%>
+<%--            href: 'asdfghj'--%>
+<%--        }--%>
+<%--    ];--%>
+<%--    // 在tbody里创建行，几个人就创建几行--%>
+<%--    var ltbody = document.querySelector('.left_top_table_body');--%>
+<%--    for (var i = 0; i < datas.length; i++) {--%>
+<%--        var ltr = document.createElement('tr');--%>
+<%--        ltbody.appendChild(ltr);--%>
+<%--        for (var k in datas[i]) {--%>
+<%--            var ltd = document.createElement('td');--%>
+<%--            ltr.appendChild(ltd);--%>
+<%--            ltd.innerHTML = datas[i][k];--%>
+<%--        }--%>
 
-        },
-        {
-            list: 2,
-            shop: 'jingdong',
-            commodit: '军装',
-            deal: 9000,
-            href: 'asdfghj'
-        },
-        {
-            list: 3,
-            shop: 'xianyu',
-            commodit: '军装',
-            deal: 5000,
-            href: 'jkgjgkhgk'
-        },
-        {
-            list: 4,
-            shop: 'weipinhui',
-            commodit: '军装',
-            deal: 100,
-            href: 'asdfghj'
-        },
-        {
-            list: 5,
-            shop: '1688',
-            commodit: '军装',
-            deal: 100,
-            href: 'asdfghj'
-        },
-        {
-            list: 6,
-            shop: '1688',
-            commodit: '军装',
-            deal: 100,
-            href: 'asdfghj'
-        },
-        {
-            list: 7,
-            shop: '1688',
-            commodit: '军装',
-            deal: 100,
-            href: 'asdfghj'
-        },
-        {
-            list: 8,
-            shop: '1688',
-            commodit: '军装',
-            deal: 100,
-            href: 'asdfghj'
-        }
-    ];
-    // 在tbody里创建行，几个人就创建几行
-    var ltbody = document.querySelector('.left_top_table_body');
-    for (var i = 0; i < datas.length; i++) {
-        var ltr = document.createElement('tr');
-        ltbody.appendChild(ltr);
-        for (var k in datas[i]) {
-            var ltd = document.createElement('td');
-            ltr.appendChild(ltd); 
-            ltd.innerHTML = datas[i][k];
-        }
-        
-    }
-
-    
-</script>
+<%--    }--%>
+<%--</script>--%>
 
 
 <!-- map -->
@@ -1110,7 +1146,7 @@ var ptbody = document.querySelector('.PublicTableBody');
     // 展示对应的省
     function showProvince(pName, Chinese_) {
         //这写省份的js都是通过在线构建工具生成的，保存在本地，需要时加载使用即可，最好不要一开始全部直接引入。
-        loadBdScript('$' + pName + 'JS', './js/map/province/' + pName + '.js', function () {
+        loadBdScript('$' + pName + 'JS', './static/js/map/province/' + pName + '.js', function () {
             initEcharts(Chinese_);
         });
     }

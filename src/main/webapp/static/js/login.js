@@ -30,7 +30,7 @@
 
     login.onclick = function () {
         if (text.value === 'bjlt' && pwd.value === '123456') {
-            this.href = 'index.html';
+            this.href = 'index.jsp';
         }
         else if (text.value !== 'bjlt') {
             alert('账号名错误！')

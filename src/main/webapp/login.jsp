@@ -1,12 +1,21 @@
-﻿<!DOCTYPE html>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="css/reset.css" rel="stylesheet" />
-    <link href="css/index.css" rel="stylesheet" />
+    <%
+        String base=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()
+                +request.getContextPath()+"/";
+        pageContext.setAttribute("basePath",base);
+    %>
+    <%--${pageContext.getAttribute("base")}--%>
+    <base href="<%=base%>">
+    <link href="static/css/reset.css" rel="stylesheet" />
+    <link href="static/css/index.css" rel="stylesheet" />
     <title>系统登录</title>
 </head>
 
@@ -49,7 +58,7 @@
         </div>
 
     </div>
-    <script src="js/login.js"></script>
+    <script src="static/js/login.js"></script>
 </body>
 
 </html>

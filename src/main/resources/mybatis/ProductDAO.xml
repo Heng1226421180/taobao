@@ -9,12 +9,26 @@ int saveUser(User user)-->
     <select id="queryProductById"  resultType="com.unicom.bean.Product">
         select * from taobao where id=#{id}
     </select>
-    <select id="queryProducts"  resultType="com.unicom.bean.Product">
-        select * from taobao
-<!--        <if test=" key!=null">-->
-<!--            where title-->
-<!--        </if>-->
+    <select id="queryMaxPrice"  resultType="decimal">
+        select MAX(price) from taobao
+    </select>
+    <select id="queryMinPrice"  resultType="decimal">
+        select Min(price) from taobao
+    </select>
+    <select id="queryProductSize"  resultType="integer">
+        select count(*) from taobao
+    </select>
+    <select id="queryProducts"  parameterType="HashMap" resultType="com.unicom.bean.Product">
+        select * from taobao where 1=1
+        <if test=" key!=null and key !='' ">
+            and itemkeys like "%"#{key}"%"
+        </if>
         order by id
+    </select>
+
+    <select id="queryProductsBySize"  resultType="com.unicom.bean.Product">
+        select * from taobao
+        order by deal desc
     </select>
 
 

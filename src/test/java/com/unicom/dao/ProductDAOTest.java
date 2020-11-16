@@ -21,7 +21,7 @@ class ProductDAOTest {
     void queryProducts() {
 //        HashMap map=new HashMap();
 //        map.put()
-        List<Product> list = productDAO.queryProducts();
-        System.out.println(list);
+//        List<Product> list = productDAO.queryProducts();
+//        System.out.println(list);
     }
 }

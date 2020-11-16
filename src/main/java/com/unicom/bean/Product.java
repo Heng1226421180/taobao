@@ -9,25 +9,33 @@ import java.math.BigDecimal;
 public class Product {
     private Integer id;
     private String title;
-    private String productlink;
+    private String itemhref;
     private BigDecimal price;
     private Integer deal;
     private String image;
     private String shop;
+    private String shophref;
     private String location;
+    private String icons;
+    private String itemkeys;
+    private String grade;
 
     public Product() {
     }
 
-    public Product(Integer id, String title, String productlink, BigDecimal price, Integer deal, String image, String shop, String location) {
+    public Product(Integer id, String title, String itemhref, BigDecimal price, Integer deal, String image, String shop, String shophref, String location, String icons, String itemkeys, String grade) {
         this.id = id;
         this.title = title;
-        this.productlink = productlink;
+        this.itemhref = itemhref;
         this.price = price;
         this.deal = deal;
         this.image = image;
         this.shop = shop;
+        this.shophref = shophref;
         this.location = location;
+        this.icons = icons;
+        this.itemkeys = itemkeys;
+        this.grade = grade;
     }
 
     public Integer getId() {
@@ -46,13 +54,12 @@ public class Product {
         this.title = title;
     }
 
-
-    public String getProductlink() {
-        return productlink;
+    public String getItemhref() {
+        return itemhref;
     }
 
-    public void setProductlink(String productlink) {
-        this.productlink = productlink;
+    public void setItemhref(String itemhref) {
+        this.itemhref = itemhref;
     }
 
     public BigDecimal getPrice() {
@@ -87,6 +94,14 @@ public class Product {
         this.shop = shop;
     }
 
+    public String getShophref() {
+        return shophref;
+    }
+
+    public void setShophref(String shophref) {
+        this.shophref = shophref;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -95,17 +110,45 @@ public class Product {
         this.location = location;
     }
 
+    public String getIcons() {
+        return icons;
+    }
+
+    public void setIcons(String icons) {
+        this.icons = icons;
+    }
+
+    public String getItemkeys() {
+        return itemkeys;
+    }
+
+    public void setItemkeys(String itemkeys) {
+        this.itemkeys = itemkeys;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", productlink='" + productlink + '\'' +
+                ", itemhref='" + itemhref + '\'' +
                 ", price=" + price +
                 ", deal=" + deal +
                 ", image='" + image + '\'' +
                 ", shop='" + shop + '\'' +
+                ", shophref='" + shophref + '\'' +
                 ", location='" + location + '\'' +
+                ", icons='" + icons + '\'' +
+                ", itemkeys='" + itemkeys + '\'' +
+                ", grade='" + grade + '\'' +
                 '}';
     }
 }

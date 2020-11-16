@@ -14,7 +14,7 @@ class ProductServiceTest {
     ProductDAO productDAO;
     @Test
     void queryProducts() {
-        List<Product> list = productDAO.queryProducts();
-        System.out.println(list);
+//        List<Product> list = productDAO.queryProducts();
+//        System.out.println(list);
     }
 }
