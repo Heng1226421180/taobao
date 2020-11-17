@@ -3,6 +3,7 @@ package com.unicom.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.unicom.bean.Product;
+import com.unicom.bean.User;
 import com.unicom.dao.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,15 +26,19 @@ public class ProductController {
 
     @RequestMapping("product")
     public String userList(HttpServletRequest request,Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user==null){
+            return "redirect:login";
+        }
         String key = request.getParameter("key");
 
         HashMap map = new HashMap();
         map.put("key", key);
         //分页，每页显示10条数据，但是现在10无法使用
-        PageHelper.startPage(pageNum, 10);
-        List<Product> list =productDAO.queryProducts(map);
+        PageHelper.startPage(pageNum,1);
+        List<Product> list =productDAO.queryProducts(null);
         PageInfo<Product> pageInfo = new PageInfo<>(list);
-
+        model.addAttribute("list",list);
         model.addAttribute("pageInfo", pageInfo);
         List<Product> listBySize = productDAO.queryProductsBySize();
         //toplist有投top10的销量排名

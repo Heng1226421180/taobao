@@ -1,6 +1,7 @@
 package com.unicom.dao;
 
 import com.unicom.bean.Product;
+
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -14,5 +15,4 @@ public interface ProductDAO {
     BigDecimal queryMaxPrice();
     BigDecimal queryMinPrice();
     Integer queryProductSize();
-
 }

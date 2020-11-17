@@ -18,7 +18,7 @@
     <%
         String base=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()
                 +request.getContextPath()+"/";
-        pageContext.setAttribute("basePath",base);
+//        pageContext.setAttribute("basePath",base);
     %>
     <%--${pageContext.getAttribute("base")}--%>
     <base href="<%=base%>">
@@ -116,9 +116,8 @@
                                 </tbody>
                             </table>
                         </div>
-
-                            <%--  分页开始                      --%>
-                        <div id="page_nav" align="left">
+                        <%--  分页开始                      --%>
+                        <div style="color: #1c69e5" id="page_nav" align="center">
                             <c:if test="${pageInfo.pageNum >1}">
                                 <a href="${url}?pageNum=1">首页</a>
                                 <a href="${url}?pageNum=${pageInfo.hasPreviousPage==false?1:pageInfo.prePage}">上一页</a>
@@ -202,6 +201,8 @@
                                                 })
                                             </script>
                         </div>
+
+
                     </div>
                 </div>
 

@@ -1,8 +1,10 @@
 package com.unicom.taobao;
 
 import com.unicom.bean.Product;
+import com.unicom.bean.User;
 import com.unicom.dao.ProductDAO;
 
+import com.unicom.dao.UserDAO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +15,8 @@ import java.util.List;
 
 @SpringBootTest
 class TaobaoApplicationTests {
-
+    @Autowired
+    UserDAO userDAO;
     @Test
     void contextLoads() {
     }
@@ -42,9 +45,11 @@ class TaobaoApplicationTests {
 //             ) {
 //            System.out.println(p);
 //        }
-        final Integer integer = productDAO.queryProductSize();
-        System.out.println(integer);
+//        final Integer integer = productDAO.queryProductSize();
+//        System.out.println(integer);
 
+        final User user = userDAO.queryUserByUsernameAndPassword("heng", "heng");
+        System.out.println(user);
 
     }
 
