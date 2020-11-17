@@ -246,7 +246,7 @@
                         <table class="left_top_table">
                             <thead class="left_top_table_head">
                                 <tr class="">
-                                    <th class="num">名次</th>
+                                    <th >名次</th>
                                     <th>店铺名</th>
                                     <th>商品名</th>
                                     <th>销量</th>
@@ -257,11 +257,11 @@
                             <tbody class="left_top_table_body">
                             <c:forEach items="${topList}" var="product">
                                 <tr class="">
-                                    <td class="num">名次</td>
+                                    <td >${topList.indexOf(product)+1}</td>
                                     <td>${product.shop}</td>
                                     <td>${product.title}</td>
                                     <td>${product.deal}</td>
-                                    <td ><a target="_blank" href="${product.itemhref}">${product.itemhref}</a></td>
+                                    <td ><a target="" href="${product.itemhref}">${product.itemhref}</a></td>
                                 </tr>
                             </c:forEach>
 
