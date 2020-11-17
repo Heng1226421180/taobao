@@ -29,11 +29,12 @@ public class ProductController {
 
         HashMap map = new HashMap();
         map.put("key", key);
-        //分页
+        //分页，每页显示10条数据，但是现在10无法使用
         PageHelper.startPage(pageNum, 10);
-
-        List<Product> list = productDAO.queryProducts(map);
+        List<Product> list =productDAO.queryProducts(map);
         PageInfo<Product> pageInfo = new PageInfo<>(list);
+
+        model.addAttribute("pageInfo", pageInfo);
         List<Product> listBySize = productDAO.queryProductsBySize();
         //toplist有投top10的销量排名
         List<Product> topList=new ArrayList<>();
@@ -44,7 +45,7 @@ public class ProductController {
         //将key回显
         model.addAttribute("key", key);
 
-        model.addAttribute("pageInfo", pageInfo);
+
 
         model.addAttribute("maxPrice",productDAO.queryMaxPrice());
 
